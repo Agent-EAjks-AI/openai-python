@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.106.0 (2025-09-04)
+
+Full Changelog: [v1.105.0...v1.106.0](https://github.com/openai/openai-python/compare/v1.105.0...v1.106.0)
+
+### Features
+
+* **client:** support callable api_key ([#2588](https://github.com/openai/openai-python/issues/2588)) ([e1bad01](https://github.com/openai/openai-python/commit/e1bad015b8a2b98bfee955a24bc931347a58efc1))
+* improve future compat with pydantic v3 ([5e5d700](https://github.com/openai/openai-python/commit/5e5d70096af52d2d1c2f31ec0e487fb371202023))
+
 ## 1.105.0 (2025-09-03)
 
 Full Changelog: [v1.104.2...v1.105.0](https://github.com/openai/openai-python/compare/v1.104.2...v1.105.0)
