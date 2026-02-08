@@ -29,6 +29,12 @@ class TestResponses:
     def test_method_create_with_all_params_overload_1(self, client: OpenAI) -> None:
         response = client.responses.create(
             background=True,
+            context_management=[
+                {
+                    "type": "type",
+                    "compact_threshold": 1000,
+                }
+            ],
             conversation="string",
             include=["file_search_call.results"],
             input="string",
@@ -110,6 +116,12 @@ class TestResponses:
         response_stream = client.responses.create(
             stream=True,
             background=True,
+            context_management=[
+                {
+                    "type": "type",
+                    "compact_threshold": 1000,
+                }
+            ],
             conversation="string",
             include=["file_search_call.results"],
             input="string",
@@ -414,6 +426,12 @@ class TestAsyncResponses:
     async def test_method_create_with_all_params_overload_1(self, async_client: AsyncOpenAI) -> None:
         response = await async_client.responses.create(
             background=True,
+            context_management=[
+                {
+                    "type": "type",
+                    "compact_threshold": 1000,
+                }
+            ],
             conversation="string",
             include=["file_search_call.results"],
             input="string",
@@ -495,6 +513,12 @@ class TestAsyncResponses:
         response_stream = await async_client.responses.create(
             stream=True,
             background=True,
+            context_management=[
+                {
+                    "type": "type",
+                    "compact_threshold": 1000,
+                }
+            ],
             conversation="string",
             include=["file_search_call.results"],
             input="string",
