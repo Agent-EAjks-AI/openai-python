@@ -13,6 +13,8 @@ from .apply_patch_tool import ApplyPatchTool
 from .file_search_tool import FileSearchTool
 from .function_shell_tool import FunctionShellTool
 from .web_search_preview_tool import WebSearchPreviewTool
+from .container_network_policy_disabled import ContainerNetworkPolicyDisabled
+from .container_network_policy_allowlist import ContainerNetworkPolicyAllowlist
 
 __all__ = [
     "Tool",
@@ -26,6 +28,7 @@ __all__ = [
     "CodeInterpreter",
     "CodeInterpreterContainer",
     "CodeInterpreterContainerCodeInterpreterToolAuto",
+    "CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy",
     "ImageGeneration",
     "ImageGenerationInputImageMask",
     "LocalShell",
@@ -169,6 +172,11 @@ class Mcp(BaseModel):
     """
 
 
+CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy: TypeAlias = Annotated[
+    Union[ContainerNetworkPolicyDisabled, ContainerNetworkPolicyAllowlist], PropertyInfo(discriminator="type")
+]
+
+
 class CodeInterpreterContainerCodeInterpreterToolAuto(BaseModel):
     """Configuration for a code interpreter container.
 
@@ -183,6 +191,9 @@ class CodeInterpreterContainerCodeInterpreterToolAuto(BaseModel):
 
     memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]] = None
     """The memory limit for the code interpreter container."""
+
+    network_policy: Optional[CodeInterpreterContainerCodeInterpreterToolAutoNetworkPolicy] = None
+    """Network access policy for the container."""
 
 
 CodeInterpreterContainer: TypeAlias = Union[str, CodeInterpreterContainerCodeInterpreterToolAuto]
